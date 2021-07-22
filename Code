@@ -2,12 +2,12 @@
 """
 Created on Thu Jul 22 15:37:11 2021
 
-@author: Samrat
+@author: Arpita
+
 """
 
 
 import pandas as pd 
-import pingouin as pg
 import time
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
@@ -21,7 +21,7 @@ from scipy.stats import sem
 from scipy.stats import t
 from scipy import stats
                          
-data = pd.read_csv(r"C:\Users\Samrat\Downloads\paypal\data.csv")
+data = pd.read_csv(r"C:\Users\Arpita\Downloads\paypal\data.csv")
  
 
 # generate two independent samples for 'Arielle' and 'Boris' to compare the scores between right hand vs left hand
