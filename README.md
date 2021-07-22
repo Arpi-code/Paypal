@@ -1,5 +1,6 @@
 # Paypal
-Question
+Case study 
+
 Arielle and Boris compete in the little-known sport of pancake flipping, and have both been nominated for this season's "best pancake flipper" award.
 Half the people in the pancake flipping league office think Arielle is the better pancake flipper, and the other half think Boris is, so they have retained a data scientist to help solve the issue.
 The stats from this season are attached. The columns are:
