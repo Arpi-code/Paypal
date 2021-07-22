@@ -1,0 +1,4 @@
+,Comparison,P_value,Result
+,Arielle Vs Boris Score,0.5,Accept null hypothesis ie .Arielle score is greater or equal to than Boris.
+,Arielle Vs Boris right hand Score,0.01,Reject the null hypothesis that the means i.e score of Boris right hand is greater than Arielle .
+,Arielle Vs Boris left hand Score,0.09,Accept null hypothesis  ie .Arielle left hand score is greater or equal to than Boris
