@@ -1,0 +1,84 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jul 22 15:37:11 2021
+
+@author: Samrat
+"""
+
+
+import pandas as pd 
+import pingouin as pg
+import time
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# t-test for independent samples
+from math import sqrt
+from numpy.random import seed
+from numpy.random import randn
+from numpy import mean
+from scipy.stats import sem
+from scipy.stats import t
+from scipy import stats
+                         
+data = pd.read_csv(r"C:\Users\Samrat\Downloads\paypal\data.csv")
+ 
+
+# generate two independent samples for 'Arielle' and 'Boris' to compare the scores between right hand vs left hand
+
+data1_R=data[(data['name']=='Arielle')&(data['hand']=='R')]['score']
+data1_L=data[(data['name']=='Arielle')&(data['hand']=='L')]['score']
+
+data2_R=data[(data['name']=='Boris')&(data['hand']=='R')]['score']
+data2_L=data[(data['name']=='Boris')&(data['hand']=='L')]['score']
+
+data1=data[(data['name']=='Arielle')]['score']
+data2=data[(data['name']=='Arielle')]['score']
+
+#Ho: Arielle mean score >=Boris mean score
+#H1: Boris mean score> Arielle mean score
+
+#calculating p value to compare Arielle and Boris score through t test 
+p_data=(stats.ttest_ind(data2, data1)[1])/2
+
+#t test output is for two tailed t test we must divide the p value by 2 for one tailed test
+#p/2 < alpha  reject null
+alpha = 0.05
+
+# interpret via p-value
+if p_data > alpha:
+	res='Accept null hypothesis that the means are equal ie .Arielle score is greater or equalto than Boris.'
+else:
+	res='Reject the null hypothesis that the means are equal i.e score of Boris  is greater than Arielle'
+    
+    
+# calculate the t test for comapring Right hand performance between 'Arielle' and 'Boris' 
+p_data_R=(stats.ttest_ind(data2_R, data1_R)[1])/2
+#p/2 < alpha  reject null
+alpha = 0.05
+
+# interpret via p-value
+if p_data_R > alpha:
+	res_R='Accept null hypothesis that the means are equal ie .Arielle right hand score is greater or equalto than Boris'
+else:
+	res_R='Reject the null hypothesis that the means i.e score of Boris right hand is greater than Arielle .'
+        
+
+
+# calculate the t test for comapring Left  hand performance between 'Arielle' and 'Boris' 
+p_data_L=(stats.ttest_ind(data2_L, data1_L)[1])/2
+#p/2 < alpha  reject null
+alpha = 0.05
+
+# interpret via p-value
+if p_data_L > alpha:
+	res_L='Accept null hypothesis that the means are equal ie .Arielle left hand score is greater or equalto than Boris'
+else:
+	res_L='Reject the null hypothesis that the means i.e score of Boris left hand score is greater than Arielle .'
+        
+
+final_data = {'T_test':['Arielle Vs Boris Score','Arielle Vs Boris right hand Score','Arielle Vs Boris left hand Score']
+              ,'P_value':[p_data, p_data_R,p_data_L], 'Result':[res, res_R,res_L]}
+
+final_result = pd.DataFrame(final_data)
+ 
